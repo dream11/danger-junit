@@ -151,7 +151,8 @@ module Danger
       @passes = tests - @failures - @errors - @skipped
     end
 
-    #outputs a markdown table of the results.
+    # Causes a build fail if there are test failures,
+    # and outputs a markdown table of the results.
     #
     # @return   [void]
     def report
@@ -167,7 +168,6 @@ module Danger
 
       unless failures.empty? && errors.empty?
         warn('Tests have failed, see below for more information.', sticky: false)
-
         message = "### Tests: \n\n"
         tests = (failures + errors)
         message << get_report_content(tests, headers)
