@@ -151,8 +151,7 @@ module Danger
       @passes = tests - @failures - @errors - @skipped
     end
 
-    # Causes a build fail if there are test failures,
-    # and outputs a markdown table of the results.
+    #outputs a markdown table of the results.
     #
     # @return   [void]
     def report
@@ -167,7 +166,7 @@ module Danger
       end
 
       unless failures.empty? && errors.empty?
-        fail('Tests have failed, see below for more information.', sticky: false)
+        warn('Tests have failed, see below for more information.', sticky: false)
 
         message = "### Tests: \n\n"
         tests = (failures + errors)
